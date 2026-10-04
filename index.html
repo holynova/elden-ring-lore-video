@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELDEN RING · 史诗交界地编年史 (HyperFrames Documentary)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-black: #060709;
+      --bg-surface: #0e1017;
+      --bg-card: #141722;
+      --border-subtle: rgba(245, 197, 66, 0.15);
+      --border-card: rgba(245, 197, 66, 0.25);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --gold-primary: #f5c542;
+      --gold-bright: #ffe28a;
+      --gold-dark: #c99a32;
+      --font-display: 'Cinzel', Georgia, serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Noto Serif SC", serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-black);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: radial-gradient(ellipse at 50% 0%, #171b26 0%, #060709 70%);
+      min-height: 100vh;
+    }
+
+    /* Ambient background rune */
+    .ambient-rune {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1000px;
+      height: 1000px;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><circle cx="250" cy="250" r="230" fill="none" stroke="%23f5c542" stroke-width="2" stroke-dasharray="8 6"/><circle cx="250" cy="250" r="190" fill="none" stroke="%23f5c542" stroke-width="1.5"/><circle cx="250" cy="250" r="120" fill="none" stroke="%23f5c542" stroke-width="2"/><line x1="250" y1="10" x2="250" y2="490" stroke="%23f5c542" stroke-width="1.5"/><line x1="10" y1="250" x2="490" y2="250" stroke="%23f5c542" stroke-width="1.5"/><circle cx="250" cy="160" r="90" fill="none" stroke="%23f5c542" stroke-width="1.5"/><circle cx="200" cy="270" r="70" fill="none" stroke="%23f5c542" stroke-width="1"/><circle cx="300" cy="270" r="70" fill="none" stroke="%23f5c542" stroke-width="1"/></svg>') no-repeat center center;
+      background-size: contain;
+      animation: rotateRune 120s linear infinite;
+    }
+
+    @keyframes rotateRune {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px 80px 24px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Header Nav */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--gold-primary);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--gold-primary);
+      box-shadow: 0 0 15px rgba(245, 197, 66, 0.3);
+      font-size: 14px;
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.25em;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+
+    .badge-links {
+      display: flex;
+      gap: 10px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      border-radius: 20px;
+      text-decoration: none;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.2s ease;
+    }
+
+    .badge:hover {
+      background: rgba(245, 197, 66, 0.15);
+      border-color: var(--gold-primary);
+      color: var(--gold-primary);
+    }
+
+    /* Hero Title Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      margin-bottom: 12px;
+      padding: 4px 14px;
+      background: rgba(245, 197, 66, 0.1);
+      border: 1px solid rgba(245, 197, 66, 0.3);
+      border-radius: 4px;
+    }
+
+    .hero-title {
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #fffaf0;
+      text-shadow: 0 0 35px rgba(245, 197, 66, 0.35);
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* Video Player Theater */
+    .player-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(245, 197, 66, 0.08);
+      margin-bottom: 60px;
+    }
+
+    .video-viewport {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .video-viewport video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Chapter Scrub Bar */
+    .chapter-nav {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chapter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .time-badge {
+      font-family: var(--font-mono);
+      color: var(--gold-primary);
+      font-weight: 600;
+    }
+
+    .chapter-pills {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .pill-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #e2e8f0;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 12px;
+    }
+
+    .pill-btn:hover {
+      background: rgba(245, 197, 66, 0.12);
+      border-color: var(--gold-primary);
+      transform: translateY(-2px);
+    }
+
+    .pill-btn.active {
+      background: rgba(245, 197, 66, 0.2);
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 15px rgba(245, 197, 66, 0.2);
+    }
+
+    .pill-time {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--gold-primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .pill-name {
+      font-weight: 600;
+      color: #fff;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Detailed Story Cards */
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--gold-primary);
+      letter-spacing: 0.15em;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-subtle) 0%, transparent 100%);
+    }
+
+    .cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .story-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .story-card:hover {
+      border-color: var(--gold-primary);
+      transform: translateY(-4px);
+    }
+
+    .card-visual {
+      position: relative;
+      height: 320px;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .story-card:hover .card-visual img {
+      transform: scale(1.05);
+    }
+
+    .visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(14, 16, 23, 0.9) 0%, transparent 60%);
+      padding: 16px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .visual-tag {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--gold-primary);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(245, 197, 66, 0.3);
+    }
+
+    .card-content {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card-chapter {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--gold-primary);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .card-quote {
+      font-size: 13px;
+      color: var(--gold-bright);
+      border-left: 2px solid var(--gold-primary);
+      padding-left: 12px;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--gold-primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 860px) {
+      .hero-title { font-size: 32px; }
+      .chapter-pills { grid-template-columns: 1fr 1fr; }
+      .story-card { grid-template-columns: 1fr; }
+      .card-visual { height: 220px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-rune"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-logo">ER</div>
+        <div class="brand-text">
+          <h1>Elden Ring · 交界地编年史</h1>
+          <p>HYPERFRAMES 1080P CINEMATIC DOCUMENTARY</p>
+        </div>
+      </div>
+      <div class="badge-links">
+        <a class="badge" href="https://github.com/holynova/elden-ring-lore-video" target="_blank">
+          GitHub Repository
+        </a>
+        <a class="badge" href="out/elden_ring_lore.mp4" download>
+          Download 1080P MP4
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-kicker">HYPERFRAMES VIDEO SHOWCASE</div>
+      <h2 class="hero-title">艾尔登法环 · 史诗交界地编年史</h2>
+      <p class="hero-subtitle">
+        基于 HyperFrames 代码驱动视频框架打造，采用纯光学单反相机镜头实拍质感，全景呈现黄金律法建立、黑刀之夜、半神争霸与终局抉择的宏伟史诗。
+      </p>
+    </section>
+
+    <!-- Video Player Box -->
+    <section class="player-section" id="player-box">
+      <div class="video-viewport">
+        <video
+          id="main-video"
+          controls
+          playsinline
+          preload="metadata"
+          poster="snapshots/frame-00-at-5s.png"
+        >
+          <source src="out/elden_ring_lore.mp4" type="video/mp4">
+          您的浏览器暂不支持 MP4 视频播放。
+        </video>
+      </div>
+
+      <div class="chapter-nav">
+        <div class="chapter-header">
+          <span>点击章节快速跳转：</span>
+          <span class="time-badge" id="time-indicator">00:00 / 01:05</span>
+        </div>
+        <div class="chapter-pills">
+          <button class="pill-btn active" onclick="seek(0)">
+            <span class="pill-time">00:00</span>
+            <span class="pill-name">01 · 黄金律法</span>
+          </button>
+          <button class="pill-btn" onclick="seek(13)">
+            <span class="pill-time">00:13</span>
+            <span class="pill-name">02 · 黑刀之夜</span>
+          </button>
+          <button class="pill-btn" onclick="seek(25.5)">
+            <span class="pill-time">00:25</span>
+            <span class="pill-name">03 · 破碎战争</span>
+          </button>
+          <button class="pill-btn" onclick="seek(38)">
+            <span class="pill-time">00:38</span>
+            <span class="pill-name">04 · 褪色者归</span>
+          </button>
+          <button class="pill-btn" onclick="seek(50.5)">
+            <span class="pill-time">00:50</span>
+            <span class="pill-name">05 · 终局抉择</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep-Dive Chapter Cards -->
+    <h3 class="section-title">图文编年史 · CHAPTER ARCHIVES</h3>
+    <div class="cards-grid">
+      <!-- Chapter 1 -->
+      <article class="story-card" onclick="seekAndScroll(0)">
+        <div class="card-visual">
+          <img src="assets/erdtree.png" alt="黄金树与宁姆格福">
+          <div class="visual-overlay">
+            <span class="visual-tag">THE GREAT ERDTREE · LIMGRAVE</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-chapter">CHAPTER 01 · 00:00 - 00:13</div>
+          <h4 class="card-title">黄金律法与无上意志</h4>
+          <p class="card-desc">
+            在辽阔的交界地，无上意志赐予黄金树繁盛荣光。永恒女王玛莉卡登神统御众生，初始之王葛孚雷率军开疆拓土。为了构筑绝对秩序，玛莉卡将“命定之死”从法环中剥离，封印于义弟黑剑玛利喀斯体内，缔造了永生不灭的黄金王朝。
+          </p>
+          <div class="card-quote">“在辽阔的交界地，无上意志赐予黄金树繁盛荣光……”</div>
+        </div>
+      </article>
+
+      <!-- Chapter 2 -->
+      <article class="story-card" onclick="seekAndScroll(13)">
+        <div class="card-visual">
+          <img src="assets/ranni_cinematic.png" alt="魔女菈妮实拍">
+          <div class="visual-overlay">
+            <span class="visual-tag">RANNI THE WITCH · NIGHT OF BLACK KNIVES</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-chapter">CHAPTER 02 · 00:13 - 00:25</div>
+          <h4 class="card-title">黑刀之夜与法环破碎</h4>
+          <p class="card-desc">
+            月之公主菈妮不甘沦为双指操纵的傀儡神人，密谋盗走死亡卢恩的一角，锻造刺客黑刀。黑刀之夜，黄金长子葛德文肉体被暗杀、灵魂湮灭，死诞者由此诞生。陷入无尽悲痛与对黄金律法根本质疑的玛莉卡女王，毅然举起石槌，砸碎了艾尔登法环。
+          </p>
+          <div class="card-quote">“陷入绝望的女王举起石槌，彻底砸碎了艾尔登法环！”</div>
+        </div>
+      </article>
+
+      <!-- Chapter 3 -->
+      <article class="story-card" onclick="seekAndScroll(25.5)">
+        <div class="card-visual">
+          <img src="assets/radahn_cinematic.png" alt="碎星拉塔恩将军">
+          <div class="visual-overlay">
+            <span class="visual-tag">THE SHATTERING · RADAHN VS MALENIA</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-chapter">CHAPTER 03 · 00:25 - 00:38</div>
+          <h4 class="card-title">破碎战争与诸神黄昏</h4>
+          <p class="card-desc">
+            女王失踪，法环化作大卢恩碎片，玛莉卡与拉达冈的孩子们——半神诸王展开惨烈争霸内战。“碎星”拉塔恩以无匹重力魔法封锁群星命运，与“未尝一败”的米凯拉之刃玛莲妮亚在盖利德原野展开天王山决战。玛莲妮亚拔除纯净金针，猩红腐败之花盛开，整片大陆化为焦土。
+          </p>
+          <div class="card-quote">“碎星拉塔恩与女武神玛莲妮亚决战盖利德，猩红腐败将大地化作焦土！”</div>
+        </div>
+      </article>
+
+      <!-- Chapter 4 -->
+      <article class="story-card" onclick="seekAndScroll(38)">
+        <div class="card-visual">
+          <img src="assets/melina.png" alt="指头女巫梅琳娜">
+          <div class="visual-overlay">
+            <span class="visual-tag">GUIDANCE OF GRACE · MAIDEN MELINA</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-chapter">CHAPTER 04 · 00:38 - 00:50</div>
+          <h4 class="card-title">褪色者归来与火种誓约</h4>
+          <p class="card-desc">
+            半神尽皆失格，无上意志彻底唾弃诸王，久违的黄金赐福微光在曾经被流放的褪色者眼中重新点亮。指头女巫梅琳娜携灵马托雷特与褪色者相遇，立下火种之誓。褪色者跨越雾海，斩杀恶兆、接肢等劲敌，直指王城罗德尔。
+          </p>
+          <div class="card-quote">“在指头女巫梅琳娜的引导下，褪色者跨越雾海，踏上争夺法环的征程。”</div>
+        </div>
+      </article>
+
+      <!-- Chapter 5 -->
+      <article class="story-card" onclick="seekAndScroll(50.5)">
+        <div class="card-visual">
+          <img src="assets/farum_azula.png" alt="天空城法姆·亚兹拉">
+          <div class="visual-overlay">
+            <span class="visual-tag">THE DESTINED CHOICE · THREE ENDINGS</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="card-chapter">CHAPTER 05 · 00:50 - 01:05</div>
+          <h4 class="card-title">觐见法环 · 终局抉择</h4>
+          <p class="card-desc">
+            燃烧黄金树，战胜初始之王葛孚雷、黄金律法拉达冈与艾尔登之兽！交界地迎来最终命运重塑：<br>
+            • <strong>艾尔登之王</strong>：修补大卢恩，登基为王，延续黄金秩序。<br>
+            • <strong>群星时代</strong>：响应魔女菈妮召唤，斩断神明干涉，率领万物航向漫漫星空长夜。<br>
+            • <strong>癫火之王</strong>：化身癫火焚尽世间万物因果，熔毁一切苦痛。
+          </p>
+          <div class="card-quote">“追随菈妮开启群星时代，还是化身癫火焚尽世间？交界地的命运由你抉择！”</div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div>
+        Made with <strong>HyperFrames</strong> (HeyGen Video-as-Code Engine) · 2026
+      </div>
+      <div>
+        Created by <a href="https://github.com/holynova" target="_blank">@holynova</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const video = document.getElementById('main-video');
+    const timeIndicator = document.getElementById('time-indicator');
+    const pills = document.querySelectorAll('.pill-btn');
+    const chapterTimes = [0, 13, 25.5, 38, 50.5];
+
+    function formatTime(s) {
+      const mins = Math.floor(s / 60);
+      const secs = Math.floor(s % 60);
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function seek(seconds) {
+      if (video) {
+        video.currentTime = seconds;
+        video.play().catch(() => {});
+      }
+    }
+
+    function seekAndScroll(seconds) {
+      seek(seconds);
+      const playerBox = document.getElementById('player-box');
+      if (playerBox) {
+        playerBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    if (video) {
+      video.addEventListener('timeupdate', () => {
+        const cur = video.currentTime;
+        timeIndicator.textContent = `${formatTime(cur)} / ${formatTime(video.duration || 65)}`;
+
+        // Highlight active chapter pill
+        let activeIdx = 0;
+        for (let i = chapterTimes.length - 1; i >= 0; i--) {
+          if (cur >= chapterTimes[i] - 0.5) {
+            activeIdx = i;
+            break;
+          }
+        }
+        pills.forEach((p, idx) => {
+          if (idx === activeIdx) {
+            p.classList.add('active');
+          } else {
+            p.classList.remove('active');
+          }
+        });
+      });
+    }
+
+    // Keyboard controls
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.code === 'Space') {
+        e.preventDefault();
+        if (video.paused) video.play(); else video.pause();
+      } else if (e.code === 'KeyF') {
+        if (!document.fullscreenElement) {
+          video.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+    });
+  </script>
+</body>
+</html>

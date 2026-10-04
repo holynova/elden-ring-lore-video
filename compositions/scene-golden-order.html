@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 120px 80px 140px 80px;
+          box-sizing: border-box;
+          color: #e5e7eb;
+        }
+
+        .s1-header {
+          position: relative;
+          z-index: 20;
+        }
+
+        .s1-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 14px;
+          background: rgba(245, 197, 66, 0.12);
+          border: 1px solid rgba(245, 197, 66, 0.35);
+          color: #f5c542;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          border-radius: 4px;
+          margin-bottom: 14px;
+          box-shadow: 0 0 15px rgba(245, 197, 66, 0.15);
+        }
+
+        .s1-title-row {
+          display: flex;
+          align-items: baseline;
+          gap: 24px;
+        }
+
+        .s1-main-title {
+          font-size: 54px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: #fff8e7;
+          text-shadow: 0 0 25px rgba(245, 197, 66, 0.45), 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .s1-sub-title {
+          font-size: 22px;
+          letter-spacing: 0.25em;
+          color: #c99a32;
+          text-transform: uppercase;
+        }
+
+        .s1-grid {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 36px;
+          z-index: 10;
+          align-items: center;
+          margin-top: 10px;
+          flex: 1;
+        }
+
+        .s1-art-card {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid rgba(245, 197, 66, 0.25);
+          background: #0c0e14;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 197, 66, 0.08);
+          height: 480px;
+        }
+
+        .s1-img-wrap {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .s1-art-card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .s1-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(7, 8, 12, 0.1) 0%, rgba(7, 8, 12, 0.4) 60%, rgba(7, 8, 12, 0.95) 100%);
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 24px;
+        }
+
+        .s1-card-tag {
+          font-size: 13px;
+          letter-spacing: 0.2em;
+          color: #f5c542;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+
+        .s1-card-name {
+          font-size: 26px;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: 0.04em;
+          margin-bottom: 4px;
+        }
+
+        .s1-card-desc {
+          font-size: 15px;
+          line-height: 1.5;
+          color: #cbd5e1;
+        }
+
+        .s1-info-panel {
+          background: rgba(18, 21, 29, 0.7);
+          border: 1px solid rgba(245, 197, 66, 0.2);
+          border-radius: 12px;
+          padding: 28px;
+          backdrop-filter: blur(12px);
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .s1-info-title {
+          font-size: 22px;
+          font-weight: 700;
+          color: #f5c542;
+          letter-spacing: 0.1em;
+          border-left: 3px solid #f5c542;
+          padding-left: 14px;
+        }
+
+        .s1-info-item {
+          display: flex;
+          gap: 14px;
+          align-items: flex-start;
+        }
+
+        .s1-info-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #f5c542;
+          box-shadow: 0 0 8px #f5c542;
+          margin-top: 8px;
+          flex-shrink: 0;
+        }
+
+        .s1-info-content {
+          font-size: 15px;
+          line-height: 1.6;
+          color: #d1d5db;
+        }
+
+        .s1-info-content strong {
+          color: #fef08a;
+        }
+      </style>
+
+      <div id="root" data-composition-id="scene-golden-order" data-width="1920" data-height="1080">
+        <div class="s1-header" id="s1-header">
+          <div class="s1-badge">纪元破晓 · CHAPTER 01</div>
+          <div class="s1-title-row">
+            <h1 class="s1-main-title">黄金律法与无上意志</h1>
+            <div class="s1-sub-title">The Golden Order & The Erdtree</div>
+          </div>
+        </div>
+
+        <div class="s1-grid">
+          <!-- Left: 黄金树 -->
+          <div class="s1-art-card" id="s1-card-1">
+            <div class="s1-img-wrap" id="s1-img-wrap-1" data-layout-allow-overflow>
+              <img src="assets/erdtree.png" alt="黄金树与宁姆格福" data-layout-allow-overflow />
+            </div>
+            <div class="s1-card-overlay">
+              <span class="s1-card-tag">神圣起源 · THE GREAT ERDTREE</span>
+              <h3 class="s1-card-name">黄金树与宁姆格福</h3>
+              <p class="s1-card-desc">无上意志降临交界地，黄金树散发永恒恩泽，开启黄金一族的昌盛时代。</p>
+            </div>
+          </div>
+
+          <!-- Right: 永恒女王与命定之死 -->
+          <div class="s1-info-panel" id="s1-panel">
+            <div class="s1-info-title">永恒女王与命定之死</div>
+            <div class="s1-info-item">
+              <div class="s1-info-dot"></div>
+              <div class="s1-info-content"><strong>永恒女王玛莉卡：</strong>成为神明化身，初始之王葛孚雷征伐四方，确立黄金律法至高统御。</div>
+            </div>
+            <div class="s1-info-item">
+              <div class="s1-info-dot"></div>
+              <div class="s1-info-content"><strong>封印命定之死：</strong>将死亡卢恩剔除并封印于结拜义弟“黑剑”玛利喀斯体内，缔造永生不朽盛世。</div>
+            </div>
+            <div class="s1-art-card" style="height: 190px; margin-top: 6px;">
+              <div class="s1-img-wrap" id="s1-img-wrap-2" data-layout-allow-overflow>
+                <img src="assets/leyndell.png" alt="王城罗德尔" data-layout-allow-overflow />
+              </div>
+              <div class="s1-card-overlay" style="padding: 14px;">
+                <span class="s1-card-tag" style="margin-bottom: 2px;">王城盛世</span>
+                <h4 class="s1-card-name" style="font-size: 18px;">罗德尔黄金王城</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s1-header", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.2);
+        tl.fromTo("#s1-card-1", { scale: 0.94, opacity: 0, x: -40 }, { scale: 1, opacity: 1, x: 0, duration: 1.0, ease: "power2.out" }, 0.4);
+        tl.fromTo("#s1-panel", { scale: 0.94, opacity: 0, x: 40 }, { scale: 1, opacity: 1, x: 0, duration: 1.0, ease: "power2.out" }, 0.6);
+        tl.fromTo("#s1-img-wrap-1 img", { scale: 1.0 }, { scale: 1.08, duration: 12.5, ease: "none" }, 0);
+        tl.fromTo("#s1-img-wrap-2 img", { scale: 1.0 }, { scale: 1.06, duration: 12.5, ease: "none" }, 0);
+        tl.to(["#s1-card-1", "#s1-panel", "#s1-header"], { opacity: 0, y: -20, duration: 0.6, ease: "power2.in" }, 12.4);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["scene-golden-order"] = tl;
+        tl.seek(0);
+      </script>
+    </template>
+  </body>
+</html>

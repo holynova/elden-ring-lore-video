@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 120px 80px 140px 80px;
+          box-sizing: border-box;
+          color: #e5e7eb;
+        }
+
+        .s2-header {
+          position: relative;
+          z-index: 20;
+        }
+
+        .s2-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 14px;
+          background: rgba(147, 197, 253, 0.15);
+          border: 1px solid rgba(147, 197, 253, 0.4);
+          color: #93c5fd;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          border-radius: 4px;
+          margin-bottom: 14px;
+          box-shadow: 0 0 15px rgba(147, 197, 253, 0.15);
+        }
+
+        .s2-title-row {
+          display: flex;
+          align-items: baseline;
+          gap: 24px;
+        }
+
+        .s2-main-title {
+          font-size: 54px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: #eff6ff;
+          text-shadow: 0 0 25px rgba(147, 197, 253, 0.5), 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .s2-sub-title {
+          font-size: 22px;
+          letter-spacing: 0.25em;
+          color: #93c5fd;
+          text-transform: uppercase;
+        }
+
+        .s2-grid {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 36px;
+          z-index: 10;
+          align-items: center;
+          margin-top: 10px;
+          flex: 1;
+        }
+
+        .s2-art-card {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid rgba(147, 197, 253, 0.3);
+          background: #090c14;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(147, 197, 253, 0.1);
+          height: 480px;
+        }
+
+        .s2-img-wrap {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .s2-art-card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .s2-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(7, 8, 12, 0.1) 0%, rgba(7, 8, 12, 0.4) 60%, rgba(7, 8, 12, 0.95) 100%);
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 24px;
+        }
+
+        .s2-card-tag {
+          font-size: 13px;
+          letter-spacing: 0.2em;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+
+        .s2-card-name {
+          font-size: 26px;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: 0.04em;
+          margin-bottom: 4px;
+        }
+
+        .s2-card-desc {
+          font-size: 15px;
+          line-height: 1.5;
+          color: #cbd5e1;
+        }
+      </style>
+
+      <div id="root" data-composition-id="scene-black-knives" data-width="1920" data-height="1080">
+        <div class="s2-header" id="s2-header">
+          <div class="s2-badge">阴谋之夜 · CHAPTER 02</div>
+          <div class="s2-title-row">
+            <h1 class="s2-main-title">黑刀之夜与法环破碎</h1>
+            <div class="s2-sub-title">Night of the Black Knives & The Shattering</div>
+          </div>
+        </div>
+
+        <div class="s2-grid">
+          <!-- Left: 魔女菈妮 设定 -->
+          <div class="s2-art-card" id="s2-card-1">
+            <div class="s2-img-wrap" id="s2-img-wrap-1" data-layout-allow-overflow>
+              <img src="assets/ranni.png" alt="月之公主菈妮" data-layout-allow-overflow />
+            </div>
+            <div class="s2-card-overlay">
+              <span class="s2-card-tag" style="color: #93c5fd;">暗夜阴谋 · RANNI THE WITCH</span>
+              <h3 class="s2-card-name">月之公主 · 菈妮</h3>
+              <p class="s2-card-desc">不甘沦为双指与无上意志的摆布，菈妮暗中盗走死亡卢恩的一角，将其注入黑刀刺客的锋刃。</p>
+            </div>
+          </div>
+
+          <!-- Right: 菈妮电影实拍与法环破碎 -->
+          <div class="s2-art-card" id="s2-card-2" style="border-color: rgba(248, 113, 113, 0.4);">
+            <div class="s2-img-wrap" id="s2-img-wrap-2" data-layout-allow-overflow>
+              <img src="assets/ranni_cinematic.png" alt="菈妮真实光学质感实拍" data-layout-allow-overflow />
+            </div>
+            <div class="s2-card-overlay">
+              <span class="s2-card-tag" style="color: #f87171;">法环粉碎 · THE SHATTERING</span>
+              <h3 class="s2-card-name">黄金之子陨落与大破碎</h3>
+              <p class="s2-card-desc">长子葛德文被刺杀，灵魂湮灭。绝望与质疑中的玛莉卡女王举起石槌，彻底击碎艾尔登法环！</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s2-header", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.1);
+        tl.fromTo("#s2-card-1", { scale: 0.92, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 0.3);
+        tl.fromTo("#s2-card-2", { scale: 0.92, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 1.0, ease: "power2.out" }, 0.6);
+        tl.fromTo("#s2-img-wrap-1 img", { scale: 1.0 }, { scale: 1.08, duration: 12, ease: "none" }, 0);
+        tl.fromTo("#s2-img-wrap-2 img", { scale: 1.0 }, { scale: 1.08, duration: 12, ease: "none" }, 0);
+        tl.to(["#s2-card-1", "#s2-card-2", "#s2-header"], { opacity: 0, scale: 0.96, duration: 0.6, ease: "power2.in" }, 11.9);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["scene-black-knives"] = tl;
+        tl.seek(0);
+      </script>
+    </template>
+  </body>
+</html>

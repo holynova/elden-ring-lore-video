@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 120px 80px 140px 80px;
+          box-sizing: border-box;
+          color: #e5e7eb;
+        }
+
+        .s5-header {
+          position: relative;
+          z-index: 20;
+        }
+
+        .s5-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 14px;
+          background: rgba(251, 191, 36, 0.2);
+          border: 1px solid #fbbf24;
+          color: #fbbf24;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          border-radius: 4px;
+          margin-bottom: 14px;
+          box-shadow: 0 0 15px rgba(251, 191, 36, 0.2);
+        }
+
+        .s5-title-row {
+          display: flex;
+          align-items: baseline;
+          gap: 24px;
+        }
+
+        .s5-main-title {
+          font-size: 54px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: #fff8e7;
+          text-shadow: 0 0 25px rgba(251, 191, 36, 0.45), 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .s5-sub-title {
+          font-size: 22px;
+          letter-spacing: 0.25em;
+          color: #fbbf24;
+          text-transform: uppercase;
+        }
+
+        .s5-grid {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 32px;
+          z-index: 10;
+          align-items: center;
+          margin-top: 10px;
+          flex: 1;
+        }
+
+        .s5-art-card {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid rgba(245, 197, 66, 0.25);
+          background: #0c0e14;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 197, 66, 0.08);
+          height: 480px;
+        }
+
+        .s5-img-wrap {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .s5-art-card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .s5-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(7, 8, 12, 0.1) 0%, rgba(7, 8, 12, 0.4) 60%, rgba(7, 8, 12, 0.95) 100%);
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 24px;
+        }
+
+        .s5-card-tag {
+          font-size: 13px;
+          letter-spacing: 0.2em;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+
+        .s5-card-name {
+          font-size: 24px;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: 0.04em;
+          margin-bottom: 6px;
+        }
+
+        .s5-card-desc {
+          font-size: 14px;
+          line-height: 1.5;
+          color: #cbd5e1;
+        }
+      </style>
+
+      <div id="root" data-composition-id="scene-endings" data-width="1920" data-height="1080">
+        <div class="s5-header" id="s5-header">
+          <div class="s5-badge">宿命抉择 · CHAPTER 05</div>
+          <div class="s5-title-row">
+            <h1 class="s5-main-title">觐见法环 · 终局抉择</h1>
+            <div class="s5-sub-title">Become the Elden Lord · Multiple Endings</div>
+          </div>
+        </div>
+
+        <div class="s5-grid">
+          <!-- Ending 1: 艾尔登之王 -->
+          <div class="s5-art-card" id="s5-card-1" style="border-color: rgba(245, 197, 66, 0.4);">
+            <div class="s5-img-wrap" id="s5-img-wrap-1" data-layout-allow-overflow>
+              <img src="assets/farum_azula.png" alt="天空城与王之征途" data-layout-allow-overflow />
+            </div>
+            <div class="s5-card-overlay">
+              <span class="s5-card-tag" style="color: #f5c542;">王权修复 · AGE OF FRACTURE</span>
+              <h3 class="s5-card-name">艾尔登之王</h3>
+              <p class="s5-card-desc">点燃灰烬，击碎艾尔登之兽。修补破碎的艾尔登法环，登上罗德尔王座，让黄金秩序再度临世。</p>
+            </div>
+          </div>
+
+          <!-- Ending 2: 群星时代 -->
+          <div class="s5-art-card" id="s5-card-2" style="border-color: rgba(147, 197, 253, 0.4);">
+            <div class="s5-img-wrap" id="s5-img-wrap-2" data-layout-allow-overflow>
+              <img src="assets/ranni_cinematic.png" alt="群星时代" data-layout-allow-overflow />
+            </div>
+            <div class="s5-card-overlay">
+              <span class="s5-card-tag" style="color: #93c5fd;">冰冷深空 · AGE OF THE STARS</span>
+              <h3 class="s5-card-name">群星时代</h3>
+              <p class="s5-card-desc">响应魔女菈妮的召唤，斩断无上意志与神明对交界地的摆布，率领万物驶向千年孤独的漫漫长夜。</p>
+            </div>
+          </div>
+
+          <!-- Ending 3: 癫火之王 -->
+          <div class="s5-art-card" id="s5-card-3" style="border-color: rgba(249, 115, 22, 0.4);">
+            <div class="s5-img-wrap" id="s5-img-wrap-3" data-layout-allow-overflow>
+              <img src="assets/maliketh.png" alt="癫火焚世与终极命运" data-layout-allow-overflow />
+            </div>
+            <div class="s5-card-overlay">
+              <span class="s5-card-tag" style="color: #fb923c;">万物归一 · LORD OF FRENZIED FLAME</span>
+              <h3 class="s5-card-name">癫火之王</h3>
+              <p class="s5-card-desc">“让混沌的火焰吞噬一切！”焚尽交界地的所有因果与分别，熔毁世间一切苦痛与罪愆。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s5-header", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.1);
+        tl.fromTo("#s5-card-1", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power2.out" }, 0.3);
+        tl.fromTo("#s5-card-2", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power2.out" }, 0.5);
+        tl.fromTo("#s5-card-3", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "power2.out" }, 0.7);
+        tl.fromTo("#s5-img-wrap-1 img", { scale: 1.0 }, { scale: 1.08, duration: 14, ease: "none" }, 0);
+        tl.fromTo("#s5-img-wrap-2 img", { scale: 1.0 }, { scale: 1.08, duration: 14, ease: "none" }, 0);
+        tl.fromTo("#s5-img-wrap-3 img", { scale: 1.0 }, { scale: 1.08, duration: 14, ease: "none" }, 0);
+        tl.to(["#s5-card-1", "#s5-card-2", "#s5-card-3", "#s5-header"], { opacity: 0, duration: 1.2, ease: "power2.in" }, 13.0);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["scene-endings"] = tl;
+        tl.seek(0);
+      </script>
+    </template>
+  </body>
+</html>

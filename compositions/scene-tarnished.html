@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 120px 80px 140px 80px;
+          box-sizing: border-box;
+          color: #e5e7eb;
+        }
+
+        .s4-header {
+          position: relative;
+          z-index: 20;
+        }
+
+        .s4-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 14px;
+          background: rgba(245, 197, 66, 0.12);
+          border: 1px solid rgba(245, 197, 66, 0.35);
+          color: #f5c542;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          border-radius: 4px;
+          margin-bottom: 14px;
+          box-shadow: 0 0 15px rgba(245, 197, 66, 0.15);
+        }
+
+        .s4-title-row {
+          display: flex;
+          align-items: baseline;
+          gap: 24px;
+        }
+
+        .s4-main-title {
+          font-size: 54px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: #fff8e7;
+          text-shadow: 0 0 25px rgba(245, 197, 66, 0.45), 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .s4-sub-title {
+          font-size: 22px;
+          letter-spacing: 0.25em;
+          color: #c99a32;
+          text-transform: uppercase;
+        }
+
+        .s4-grid {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 36px;
+          z-index: 10;
+          align-items: center;
+          margin-top: 10px;
+          flex: 1;
+        }
+
+        .s4-art-card {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid rgba(245, 197, 66, 0.25);
+          background: #0c0e14;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 197, 66, 0.08);
+          height: 480px;
+        }
+
+        .s4-img-wrap {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .s4-art-card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .s4-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(7, 8, 12, 0.1) 0%, rgba(7, 8, 12, 0.4) 60%, rgba(7, 8, 12, 0.95) 100%);
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 24px;
+        }
+
+        .s4-card-tag {
+          font-size: 13px;
+          letter-spacing: 0.2em;
+          color: #f5c542;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+
+        .s4-card-name {
+          font-size: 26px;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: 0.04em;
+          margin-bottom: 4px;
+        }
+
+        .s4-card-desc {
+          font-size: 15px;
+          line-height: 1.5;
+          color: #cbd5e1;
+        }
+
+        .s4-info-panel {
+          background: rgba(18, 21, 29, 0.7);
+          border: 1px solid rgba(245, 197, 66, 0.2);
+          border-radius: 12px;
+          padding: 28px;
+          backdrop-filter: blur(12px);
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        .s4-info-title {
+          font-size: 22px;
+          font-weight: 700;
+          color: #f5c542;
+          letter-spacing: 0.1em;
+          border-left: 3px solid #f5c542;
+          padding-left: 14px;
+        }
+
+        .s4-info-item {
+          display: flex;
+          gap: 14px;
+          align-items: flex-start;
+        }
+
+        .s4-info-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #f5c542;
+          box-shadow: 0 0 8px #f5c542;
+          margin-top: 8px;
+          flex-shrink: 0;
+        }
+
+        .s4-info-content {
+          font-size: 15px;
+          line-height: 1.6;
+          color: #d1d5db;
+        }
+
+        .s4-info-content strong {
+          color: #fef08a;
+        }
+      </style>
+
+      <div id="root" data-composition-id="scene-tarnished" data-width="1920" data-height="1080">
+        <div class="s4-header" id="s4-header">
+          <div class="s4-badge">赐福指引 · CHAPTER 04</div>
+          <div class="s4-title-row">
+            <h1 class="s4-main-title">褪色者归来与火种誓约</h1>
+            <div class="s4-sub-title">Rise, Tarnished · Guidance of Grace</div>
+          </div>
+        </div>
+
+        <div class="s4-grid">
+          <!-- Left: 指头女巫梅琳娜 -->
+          <div class="s4-art-card" id="s4-card-1">
+            <div class="s4-img-wrap" id="s4-img-wrap-1" data-layout-allow-overflow>
+              <img src="assets/melina.png" alt="指头女巫梅琳娜" data-layout-allow-overflow />
+            </div>
+            <div class="s4-card-overlay">
+              <span class="s4-card-tag">火种之女 · MAIDEN MELINA</span>
+              <h3 class="s4-card-name">指头女巫 · 梅琳娜</h3>
+              <p class="s4-card-desc">“我能为你将卢恩化为力量……请带我前往黄金树脚下。”火种之誓，托雷特灵马相伴。</p>
+            </div>
+          </div>
+
+          <!-- Right: 褪色者的宿命 -->
+          <div class="s4-info-panel" id="s4-panel">
+            <div class="s4-info-title">穿越雾海的流亡英雄</div>
+            <div class="s4-info-item">
+              <div class="s4-info-dot"></div>
+              <div class="s4-info-content"><strong>半神尽皆失格：</strong>无上意志彻底唾弃争斗不休的半神，久违的赐福微光在死而未僵的褪色者眼中重新点亮。</div>
+            </div>
+            <div class="s4-info-item">
+              <div class="s4-info-dot"></div>
+              <div class="s4-info-content"><strong>穿越险阻重登王座：</strong>踏破宁姆格福与火山高原，击败恶兆妖鬼玛尔基特，拔剑直指黄金律法的心脏。</div>
+            </div>
+            <div class="s4-art-card" style="height: 190px; margin-top: 6px;">
+              <div class="s4-img-wrap" id="s4-img-wrap-2" data-layout-allow-overflow>
+                <img src="assets/godfrey.png" alt="初始之王葛孚雷" data-layout-allow-overflow />
+              </div>
+              <div class="s4-card-overlay" style="padding: 14px;">
+                <span class="s4-card-tag" style="margin-bottom: 2px;">初代褪色者</span>
+                <h4 class="s4-card-name" style="font-size: 18px;">“初始之王”葛孚雷</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s4-header", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.1);
+        tl.fromTo("#s4-card-1", { scale: 0.94, opacity: 0, x: -40 }, { scale: 1, opacity: 1, x: 0, duration: 1.0, ease: "power2.out" }, 0.3);
+        tl.fromTo("#s4-panel", { scale: 0.94, opacity: 0, x: 40 }, { scale: 1, opacity: 1, x: 0, duration: 1.0, ease: "power2.out" }, 0.6);
+        tl.fromTo("#s4-img-wrap-1 img", { scale: 1.0 }, { scale: 1.08, duration: 12, ease: "none" }, 0);
+        tl.fromTo("#s4-img-wrap-2 img", { scale: 1.0 }, { scale: 1.06, duration: 12, ease: "none" }, 0);
+        tl.to(["#s4-card-1", "#s4-panel", "#s4-header"], { opacity: 0, y: -20, duration: 0.6, ease: "power2.in" }, 11.9);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["scene-tarnished"] = tl;
+        tl.seek(0);
+      </script>
+    </template>
+  </body>
+</html>

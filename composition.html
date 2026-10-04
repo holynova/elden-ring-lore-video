@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>艾尔登法环 史诗剧情编年史 - Elden Ring Lore Documentary</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: 'Cinzel';
+        src: local('Cinzel'), local('Georgia');
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #050608;
+        color: #e5e7eb;
+        font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      }
+
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: radial-gradient(ellipse at 50% 40%, #151821 0%, #08090d 60%, #030406 100%);
+      }
+
+      /* Background Ambient Rune Ring */
+      .rune-backdrop {
+        position: absolute;
+        width: 1200px;
+        height: 1200px;
+        left: calc(50% - 600px);
+        top: calc(50% - 600px);
+        opacity: 0.12;
+        pointer-events: none;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><circle cx="250" cy="250" r="230" fill="none" stroke="%23f5c542" stroke-width="2" stroke-dasharray="8 6"/><circle cx="250" cy="250" r="190" fill="none" stroke="%23f5c542" stroke-width="1.5"/><circle cx="250" cy="250" r="120" fill="none" stroke="%23f5c542" stroke-width="2"/><line x1="250" y1="10" x2="250" y2="490" stroke="%23f5c542" stroke-width="1.5"/><line x1="10" y1="250" x2="490" y2="250" stroke="%23f5c542" stroke-width="1.5"/><circle cx="250" cy="160" r="90" fill="none" stroke="%23f5c542" stroke-width="1.5"/><circle cx="200" cy="270" r="70" fill="none" stroke="%23f5c542" stroke-width="1"/><circle cx="300" cy="270" r="70" fill="none" stroke="%23f5c542" stroke-width="1"/></svg>') no-repeat center center;
+        background-size: contain;
+      }
+
+      /* Global Header Banner */
+      .top-brand {
+        position: absolute;
+        top: 36px;
+        left: 80px;
+        right: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 50;
+        border-bottom: 1px solid rgba(245, 197, 66, 0.2);
+        padding-bottom: 18px;
+      }
+
+      .top-brand-title {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .top-brand-icon {
+        width: 32px;
+        height: 32px;
+        border: 1px solid #f5c542;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: #f5c542;
+        font-family: 'Cinzel', serif;
+        font-size: 14px;
+        font-weight: 700;
+        box-shadow: 0 0 12px rgba(245, 197, 66, 0.4);
+      }
+
+      .top-brand-text {
+        font-family: 'Cinzel', Georgia, serif;
+        font-size: 20px;
+        letter-spacing: 0.35em;
+        color: #d4a32e;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .top-brand-tag {
+        font-size: 14px;
+        letter-spacing: 0.2em;
+        color: #8b949e;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 6px 16px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      /* Sub-composition host slots stretch to fill root */
+      [data-composition-id="main"] > div[data-composition-src] {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* Subtitle Bar at Bottom */
+      .bottom-narrative-bar {
+        position: absolute;
+        bottom: 30px;
+        left: 80px;
+        right: 80px;
+        height: 72px;
+        background: rgba(8, 10, 15, 0.92);
+        border: 1px solid rgba(245, 197, 66, 0.35);
+        border-radius: 8px;
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(245, 197, 66, 0.15);
+        z-index: 60;
+      }
+
+      .narrative-speaker {
+        font-family: 'Cinzel', serif;
+        font-size: 14px;
+        letter-spacing: 0.25em;
+        color: #f5c542;
+        font-weight: 700;
+        border-right: 1px solid rgba(245, 197, 66, 0.3);
+        padding-right: 20px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .speaker-glow {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #f5c542;
+        box-shadow: 0 0 10px #f5c542;
+      }
+
+      .narrative-text {
+        font-size: 20px;
+        color: #f3f4f6;
+        letter-spacing: 0.04em;
+        font-weight: 500;
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Subtle Film Grain Overlay */
+      .film-grain {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 90;
+        opacity: 0.04;
+        background-image: radial-gradient(#fff 1px, transparent 0);
+        background-size: 4px 4px;
+      }
+
+      /* Vignette */
+      .vignette-layer {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 80;
+        background: radial-gradient(ellipse at center, transparent 65%, rgba(0, 0, 0, 0.8) 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-width="1920"
+      data-height="1080"
+      data-duration="65"
+    >
+      <!-- Background Elements -->
+      <div id="bg-rune" class="rune-backdrop"></div>
+      <div class="film-grain" data-layout-allow-occlusion></div>
+
+      <!-- Top Branding Bar -->
+      <div class="top-brand">
+        <div class="top-brand-title">
+          <div class="top-brand-icon">ER</div>
+          <span class="top-brand-text">Elden Ring · 史诗交界地编年史</span>
+        </div>
+        <div class="top-brand-tag">HYPERFRAMES CINEMATIC LORE</div>
+      </div>
+
+      <!-- Sub-Composition Scenes -->
+      <div
+        id="el-scene1"
+        data-composition-id="scene-golden-order"
+        data-composition-src="compositions/scene-golden-order.html"
+        data-start="0"
+        data-duration="13"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <div
+        id="el-scene2"
+        data-composition-id="scene-black-knives"
+        data-composition-src="compositions/scene-black-knives.html"
+        data-start="13"
+        data-duration="12.5"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <div
+        id="el-scene3"
+        data-composition-id="scene-shattering"
+        data-composition-src="compositions/scene-shattering.html"
+        data-start="25.5"
+        data-duration="12.5"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <div
+        id="el-scene4"
+        data-composition-id="scene-tarnished"
+        data-composition-src="compositions/scene-tarnished.html"
+        data-start="38"
+        data-duration="12.5"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <div
+        id="el-scene5"
+        data-composition-id="scene-endings"
+        data-composition-src="compositions/scene-endings.html"
+        data-start="50.5"
+        data-duration="14.5"
+        data-track-index="1"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+
+      <!-- Shared Bottom Subtitle Bar -->
+      <div class="bottom-narrative-bar">
+        <div class="narrative-speaker">
+          <div class="speaker-glow"></div>
+          <span>史诗叙事</span>
+        </div>
+        <div id="narrative-subtitle" class="narrative-text">
+          在辽阔的交界地，无上意志赐予黄金树繁盛荣光……
+        </div>
+      </div>
+
+      <!-- Master Audio Bed & Voiceover Track -->
+      <audio
+        id="master-soundtrack"
+        src="assets/master_audio.mp3"
+        data-start="0"
+        data-duration="65"
+        data-track-index="10"
+        data-volume="1"
+      ></audio>
+    </div>
+
+    <!-- GSAP Master Animation Engine -->
+    <script>
+      const tl = gsap.timeline({ paused: true });
+
+      // Ambient Rune Rotation
+      tl.to("#bg-rune", { rotation: 360, duration: 65, ease: "none" }, 0);
+
+      // Subtitles synchronized with master narration
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "在辽阔的交界地，无上意志赐予黄金树繁盛荣光。永恒女王玛莉卡统御众生……";
+      }, null, 0.8);
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "命定之死被封印于黑剑体内，不朽的黄金律法就此建立。";
+      }, null, 6.8);
+
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "然而暗流涌动。月之公主菈妮盗走死亡卢恩，黑刀刺客暗杀了黄金之子葛德文……";
+      }, null, 13.5);
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "陷入绝望的女王举起石槌，彻底砸碎了艾尔登法环！";
+      }, null, 19.8);
+
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "法环崩解为大卢恩碎片，诸位半神展开惨烈的破碎战争……";
+      }, null, 26.2);
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "碎星拉塔恩与女武神玛莲妮亚决战盖利德，猩红腐败将大地化作焦土！";
+      }, null, 31.8);
+
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "无上意志抛弃了半神，微弱的赐福重新唤醒被放逐的褪色者……";
+      }, null, 38.8);
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "在指头女巫梅琳娜的引导下，褪色者跨越雾海，踏上争夺法环的征程。";
+      }, null, 44.5);
+
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "燃烧黄金树，直面艾尔登之兽。是修复法环成为艾尔登之王……";
+      }, null, 51.5);
+      tl.call(() => {
+        const el = document.getElementById("narrative-subtitle");
+        if (el) el.textContent = "追随菈妮开启群星时代，还是化身癫火焚尽世间？交界地的命运由你抉择！";
+      }, null, 57.0);
+
+      // Register Composition Timeline
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

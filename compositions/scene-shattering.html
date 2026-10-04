@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        #root {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 120px 80px 140px 80px;
+          box-sizing: border-box;
+          color: #e5e7eb;
+        }
+
+        .s3-header {
+          position: relative;
+          z-index: 20;
+        }
+
+        .s3-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 14px;
+          background: rgba(239, 68, 68, 0.15);
+          border: 1px solid rgba(239, 68, 68, 0.4);
+          color: #f87171;
+          font-size: 15px;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          border-radius: 4px;
+          margin-bottom: 14px;
+          box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
+        }
+
+        .s3-title-row {
+          display: flex;
+          align-items: baseline;
+          gap: 24px;
+        }
+
+        .s3-main-title {
+          font-size: 54px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: #fff1f2;
+          text-shadow: 0 0 25px rgba(239, 68, 68, 0.5), 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .s3-sub-title {
+          font-size: 22px;
+          letter-spacing: 0.25em;
+          color: #f87171;
+          text-transform: uppercase;
+        }
+
+        .s3-grid {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 36px;
+          z-index: 10;
+          align-items: center;
+          margin-top: 10px;
+          flex: 1;
+        }
+
+        .s3-art-card {
+          position: relative;
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid rgba(239, 68, 68, 0.35);
+          background: #12090b;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(239, 68, 68, 0.15);
+          height: 480px;
+        }
+
+        .s3-img-wrap {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .s3-art-card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .s3-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(7, 8, 12, 0.1) 0%, rgba(7, 8, 12, 0.4) 60%, rgba(7, 8, 12, 0.95) 100%);
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 24px;
+        }
+
+        .s3-card-tag {
+          font-size: 13px;
+          letter-spacing: 0.2em;
+          font-weight: 600;
+          margin-bottom: 6px;
+        }
+
+        .s3-card-name {
+          font-size: 26px;
+          font-weight: 700;
+          color: #ffffff;
+          letter-spacing: 0.04em;
+          margin-bottom: 4px;
+        }
+
+        .s3-card-desc {
+          font-size: 15px;
+          line-height: 1.5;
+          color: #cbd5e1;
+        }
+      </style>
+
+      <div id="root" data-composition-id="scene-shattering" data-width="1920" data-height="1080">
+        <div class="s3-header" id="s3-header">
+          <div class="s3-badge">半神争霸 · CHAPTER 03</div>
+          <div class="s3-title-row">
+            <h1 class="s3-main-title">破碎战争与诸神黄昏</h1>
+            <div class="s3-sub-title">The Shattering War · Radahn vs Malenia</div>
+          </div>
+        </div>
+
+        <div class="s3-grid">
+          <!-- Left: 碎星拉塔恩 -->
+          <div class="s3-art-card" id="s3-card-1" style="border-color: rgba(251, 146, 60, 0.4);">
+            <div class="s3-img-wrap" id="s3-img-wrap-1" data-layout-allow-overflow>
+              <img src="assets/radahn_cinematic.png" alt="碎星拉塔恩将军" data-layout-allow-overflow />
+            </div>
+            <div class="s3-card-overlay">
+              <span class="s3-card-tag" style="color: #fb923c;">重力魔法之主 · GENERAL RADAHN</span>
+              <h3 class="s3-card-name">“碎星”拉塔恩</h3>
+              <p class="s3-card-desc">以浩瀚重力魔法封锁群星命运。盖利德红狮子军团的最强半神将军，战场之上无可撼动的战神。</p>
+            </div>
+          </div>
+
+          <!-- Right: 女武神玛莲妮亚 -->
+          <div class="s3-art-card" id="s3-card-2" style="border-color: rgba(248, 113, 113, 0.4);">
+            <div class="s3-img-wrap" id="s3-img-wrap-2" data-layout-allow-overflow>
+              <img src="assets/malenia_cinematic.png" alt="米凯拉之刃玛莲妮亚" data-layout-allow-overflow />
+            </div>
+            <div class="s3-card-overlay">
+              <span class="s3-card-tag" style="color: #f87171;">未尝一败 · BLADE OF MIQUELLA</span>
+              <h3 class="s3-card-name">“女武神”玛莲妮亚</h3>
+              <p class="s3-card-desc">决战盖利德，玛莲妮亚拔除纯净金针，猩红腐败之花惨烈盛开，整个大陆化为炼狱焦土，两败俱伤。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#s3-header", { y: -30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, 0.1);
+        tl.fromTo("#s3-card-1", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 1.0, ease: "power2.out" }, 0.3);
+        tl.fromTo("#s3-card-2", { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 1.0, ease: "power2.out" }, 0.6);
+        tl.fromTo("#s3-img-wrap-1 img", { scale: 1.0 }, { scale: 1.08, duration: 12, ease: "none" }, 0);
+        tl.fromTo("#s3-img-wrap-2 img", { scale: 1.0 }, { scale: 1.08, duration: 12, ease: "none" }, 0);
+        tl.to(["#s3-card-1", "#s3-card-2", "#s3-header"], { opacity: 0, y: -20, duration: 0.6, ease: "power2.in" }, 11.9);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["scene-shattering"] = tl;
+        tl.seek(0);
+      </script>
+    </template>
+  </body>
+</html>
